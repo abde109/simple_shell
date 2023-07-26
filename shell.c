@@ -73,7 +73,7 @@ void print_d(int n, int fd)
 	write(fd, &c, 1);
 }
 
-void _cd(char **parameters)
+void _cd(char *parameter, char **parameters, int line_count)
 {
 	char *s, *dir, buffer[1024];
 	int chdir_ret;
@@ -107,7 +107,7 @@ void _cd(char **parameters)
 		chdir_ret = chdir(parameters[1]);
 	if (chdir_ret == -1)
 	{
-		print_error("hsh", line_count, "cd", ": can't cd to ");
+		print_error(parameter, line_count, parameters[0], "can't cd to ");
 		_perror(parameters[1]);
 		_perror("\n");
 	}
@@ -210,7 +210,7 @@ void execute_shell_command(char **parameters, char *parameter, int line_count)
 	pid_t processId;
 	if (_strcmp(parameters[0], "cd") == 0)
 	{
-		_cd(parameters);
+		_cd(parameter, parameters, line_count);
 		return;
 	}
 	else if (_strcmp(parameters[0], "echo") == 0)

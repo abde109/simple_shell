@@ -36,7 +36,7 @@ void exit_shell_status(char **parameters);
 int _putchar(char c);
 void _eputs(char *str);
 void print_d(int n, int fd);
-void _cd(char **parameters);
+void _cd(char *parameter, char **parameters,int line_count);
 void add_to_list(list_t **list, char *str);
 void print_list_string(list_t *list);
 void print_filtered_env(void);
