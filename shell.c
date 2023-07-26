@@ -440,8 +440,15 @@ int main(int argCount, char **arguments)
 {
 	if (argCount == 1)
 		prompt(arguments);
-	if (argCount == 2)
+	else if (argCount == 2)
+	{
 		run_file_commands(arguments[1], arguments,line_count);
+	}
+	else
+	{
+		_perror("Usage: simple_shell [filename]\n");
+		return EXIT_FAILURE;
+	}
 	return (EXIT_SUCCESS);
 }
 
