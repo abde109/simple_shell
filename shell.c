@@ -365,17 +365,20 @@ void prompt(char **arguments __attribute__((unused)))
 	}
 }
 
-void run_file_commands(const char *fileName, char **arguments)
+void run_file_commands(const char *fileName, char **arguments, int line_count)
 {
 	char inputLine[MAX_LINE_LENGTH];
 	FILE *filePointer = fopen(fileName, "r");
 
 	if (!filePointer)
 	{
-		_perror(arguments[0]);
-		_perror(": 0: Can't open");
-		_perror("\n");
-		exit(127);
+		if (!filePointer)
+		{
+			char errorMsg[128];
+			snprintf(errorMsg, sizeof(errorMsg), "cannot open %s", fileName);
+			print_error(arguments[0], line_count, errorMsg, "No such file\n");
+			exit(2);
+		}
 	}
 
 	while (fgets(inputLine, MAX_LINE_LENGTH, filePointer) != NULL)
@@ -438,7 +441,7 @@ int main(int argCount, char **arguments)
 	if (argCount == 1)
 		prompt(arguments);
 	if (argCount == 2)
-		run_file_commands(arguments[1], arguments);
+		run_file_commands(arguments[1], arguments,line_count);
 	return (EXIT_SUCCESS);
 }
 

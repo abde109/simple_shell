@@ -51,7 +51,7 @@ char *shell_prompt(void);
 int _print(char *text);
 int _perror(char *errorMessage);
 void prompt(char **arguments);
-void run_file_commands(const char *fileName, char **arguments);
+void run_file_commands(const char *fileName, char **arguments, int line_count);
 void file_shell_prompt(char *inputLine, char **arguments);
 char *_strtok(char *str, char delimiter);
 int _strlen(char *str);
