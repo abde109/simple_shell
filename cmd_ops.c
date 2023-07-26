@@ -39,9 +39,7 @@ void _cd(char *parameter, char **parameters, int line_count)
 		chdir_ret = chdir(dir);
 	}
 	else
-	{
 		chdir_ret = chdir(parameters[1]);
-	}
 
 	if (chdir_ret == -1)
 	{
