@@ -275,11 +275,6 @@ void execute_shell_command(char **parameters, char *parameter, int line_count)
         if (WIFEXITED(processStatus))
         {
             exitStatus = WEXITSTATUS(processStatus);
-            
-            if (exitStatus != 0)
-            {
-                exit(exitStatus);
-            }
         }
     }
     else if (processId < 0)
