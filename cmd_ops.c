@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * change_dir - Changes the current directory to the specified one.
+ * @parameter: The directory to change to.
+ * @parameters: The parameters for the change.
+ * @line_count: The line count in the command.
+ * @dir: The directory to change to.
+ */
 void change_dir(char *parameter, char **parameters, int line_count, char *dir)
 {
 	int chdir_ret;
