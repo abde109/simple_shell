@@ -57,7 +57,7 @@ void print_filtered_env(void)
 	char **envp = environ;
 	info_t info;
 	info.env = NULL;
-	
+
 	while (*envp)
 	{
 		add_to_list(&(info.env), *envp);
