@@ -9,11 +9,13 @@
 void run_file_commands(const char *fileName, char **arguments, int line_count)
 {
 	char inputLine[MAX_LINE_LENGTH];
-	FILE *filePointer = fopen(fileName, "r");
+	FILE *filePointer;
 
+	filePointer = fopen(fileName, "r");
 	if (!filePointer)
 	{
 		char errorMsg[128];
+
 		snprintf(errorMsg, sizeof(errorMsg), "cannot open %s", fileName);
 		print_error(arguments[0], line_count, errorMsg, "No such file\n");
 		exit(2);
@@ -25,6 +27,20 @@ void run_file_commands(const char *fileName, char **arguments, int line_count)
 	}
 
 	fclose(filePointer);
+}
+
+/**
+ * handle_exit - Handles the exit command.
+ * @tokens: The tokenized command.
+ */
+void handle_exit(char **tokens)
+{
+	if (tokens[0] != NULL)
+	{
+		exit_shell_status(tokens, exitStatus);
+	}
+	free(tokens);
+	exit_shell();
 }
 
 /**
@@ -67,12 +83,7 @@ void file_shell_prompt(char *inputLine, char **arguments)
 	{
 		if (strcmp(tokens[0], "exit") == 0)
 		{
-			if (tokens[0] != NULL)
-			{
-				exit_shell_status(tokens, exitStatus);
-			}
-			free(tokens);
-			exit_shell();
+			handle_exit(tokens);
 		}
 		execute_shell_command(tokens, arguments[0], line_count);
 	}
