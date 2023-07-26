@@ -34,7 +34,7 @@ void run_file_commands(const char *fileName, char **arguments, int line_count)
  */
 void file_shell_prompt(char *inputLine, char **arguments)
 {
-	static int line_count = 0;
+	static int line_count;
 	char **tokens, previousChar, *linePointer, *comment;
 	int quoteFlag;
 
