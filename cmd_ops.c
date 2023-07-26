@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void change_dir(char *dir)
+void change_dir(char *parameter, char **parameters, int line_count, char *dir)
 {
 	int chdir_ret;
 	chdir_ret = chdir(dir);
@@ -12,6 +12,7 @@ void change_dir(char *dir)
 	}
 	else
 	{
+		char buffer[1024];
 		setenv("OLDPWD", getenv("PWD"), 1);
 		setenv("PWD", getcwd(buffer, 1024), 1);
 	}
@@ -38,7 +39,7 @@ void _cd(char *parameter, char **parameters, int line_count)
 		dir = getenv("HOME");
 		if (!dir)
 			dir = (dir = getenv("PWD")) ? dir : "/";
-		change_dir(dir);
+		change_dir(parameter, parameters, line_count, dir);
 	}
 	else if (_strcmp(parameters[1], "-") == 0)
 	{
@@ -51,10 +52,10 @@ void _cd(char *parameter, char **parameters, int line_count)
 		}
 		_puts(dir);
 		_putchar('\n');
-		change_dir(dir);
+		change_dir(parameter, parameters, line_count, dir);
 	}
 	else
-		change_dir(parameters[1]);
+		change_dir(parameter, parameters, line_count, parameters[1]);
 }
 
 /**
