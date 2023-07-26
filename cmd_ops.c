@@ -3,8 +3,8 @@
 void change_dir(char *parameter, char **parameters, int line_count, char *dir)
 {
 	int chdir_ret;
-	chdir_ret = chdir(dir);
 
+	chdir_ret = chdir(dir);
 	if (chdir_ret == -1)
 	{
 		print_error(parameter, line_count, parameters[0], "can't cd to ");
