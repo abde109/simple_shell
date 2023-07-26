@@ -11,6 +11,7 @@ void env_shell(char **parameters)
 		_perror("fenv: Too many arguments\n");
 		return;
 	}
+
 	print_filtered_env();
 }
 
@@ -28,11 +29,15 @@ int set_env(char *varName, char *varValue)
 
 	length = strlen(varName) + strlen(varValue) + 2;
 	environmentVar = malloc(length);
+
 	if (environmentVar == NULL)
 		return (-1);
+
 	snprintf(environmentVar, length, "%s=%s", varName, varValue);
+
 	if (putenv(environmentVar) != 0)
 		return (-1);
+
 	return (0);
 }
 
@@ -46,6 +51,7 @@ int unset_env(char *varName)
 {
 	if (unsetenv(varName) != 0)
 		return (-1);
+
 	return (0);
 }
 
@@ -55,7 +61,6 @@ int unset_env(char *varName)
 void print_filtered_env(void)
 {
 	char **envp = environ;
-
 	info_t info;
 	info.env = NULL;
 
@@ -64,5 +69,6 @@ void print_filtered_env(void)
 		add_to_list(&(info.env), *envp);
 		envp++;
 	}
+
 	print_list_string(info.env);
 }
