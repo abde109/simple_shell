@@ -301,6 +301,10 @@ char **tokenize_input(char *line)
 
 	while (token != NULL)
 	{
+		if (token[0] == '#')
+		{
+			break;
+		}
 		if (token[0] == '"' && token[strlen(token) - 1] == '"')
 		{
 			token[strlen(token) - 1] = '\0';
