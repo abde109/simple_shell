@@ -257,7 +257,7 @@ void execute_shell_command(char **parameters, char *parameter, int line_count)
             if (execv(parameters[0], parameters) == -1)
             {
                 print_error(parameter, line_count, parameters[0], "not found\n");
-                exit(127);
+                /*exit(EXIT_FAILURE);*/
             }
         }
         else
@@ -265,7 +265,7 @@ void execute_shell_command(char **parameters, char *parameter, int line_count)
             if (execvp(parameters[0], parameters) == -1)
             {
                 print_error(parameter, line_count, parameters[0], "not found\n");
-                exit(127);
+                /*exit(EXIT_FAILURE);*/
             }
         }
     }
@@ -275,10 +275,8 @@ void execute_shell_command(char **parameters, char *parameter, int line_count)
         if (WIFEXITED(processStatus))
         {
             exitStatus = WEXITSTATUS(processStatus);
-            if (exitStatus != 0)
-            {
-                exit(exitStatus);
-            }
+
+            exit(exitStatus);
         }
     }
     else if (processId < 0)
