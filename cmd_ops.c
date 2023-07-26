@@ -14,7 +14,6 @@ void change_dir(char *parameter, char **parameters, int line_count, char *dir)
 	else
 	{
 		char buffer[1024];
-		
 		setenv("OLDPWD", getenv("PWD"), 1);
 		setenv("PWD", getcwd(buffer, 1024), 1);
 	}
