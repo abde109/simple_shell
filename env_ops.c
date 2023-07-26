@@ -18,6 +18,7 @@ void env_shell(char **parameters)
  * set_env - Sets an environment variable.
  * @varName: The name of the variable.
  * @varValue: The value of the variable.
+ *
  * Return: 0 on success, -1 on failure.
  */
 int set_env(char *varName, char *varValue)
@@ -38,6 +39,7 @@ int set_env(char *varName, char *varValue)
 /**
  * unset_env - Unsets an environment variable.
  * @varName: The name of the variable.
+ *
  * Return: 0 on success, -1 on failure.
  */
 int unset_env(char *varName)
@@ -50,7 +52,7 @@ int unset_env(char *varName)
 /**
  * print_filtered_env - Prints the filtered environment.
  */
-void print_filtered_env()
+void print_filtered_env(void)
 {
 	char **envp = environ;
 	info_t info;

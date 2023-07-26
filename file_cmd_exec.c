@@ -13,13 +13,10 @@ void run_file_commands(const char *fileName, char **arguments, int line_count)
 
 	if (!filePointer)
 	{
-		if (!filePointer)
-		{
-			char errorMsg[128];
-			snprintf(errorMsg, sizeof(errorMsg), "cannot open %s", fileName);
-			print_error(arguments[0], line_count, errorMsg, "No such file\n");
-			exit(2);
-		}
+		char errorMsg[128];
+		snprintf(errorMsg, sizeof(errorMsg), "cannot open %s", fileName);
+		print_error(arguments[0], line_count, errorMsg, "No such file\n");
+		exit(2);
 	}
 
 	while (fgets(inputLine, MAX_LINE_LENGTH, filePointer) != NULL)
@@ -72,7 +69,7 @@ void file_shell_prompt(char *inputLine, char **arguments)
 		{
 			if (tokens[0] != NULL)
 			{
-				exit_shell_status(tokens,exitStatus);
+				exit_shell_status(tokens, exitStatus);
 			}
 			free(tokens);
 			exit_shell();

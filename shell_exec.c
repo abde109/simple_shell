@@ -1,6 +1,69 @@
 #include "shell.h"
 
 /**
+ * execute_cd_command - Executes the 'cd' command.
+ * @parameters: The parameters for the command.
+ * @parameter: The parameter for the command.
+ * @line_count: The line count in the command.
+ */
+void execute_cd_command(char **parameters, char *parameter, int line_count)
+{
+	_cd(parameter, parameters, line_count);
+}
+
+/**
+ * execute_echo_command - Executes the 'echo' command.
+ * @parameters: The parameters for the command.
+ */
+void execute_echo_command(char **parameters)
+{
+	_echo(parameters);
+}
+
+/**
+ * execute_env_command - Executes the 'env' command.
+ * @parameters: The parameters for the command.
+ */
+void execute_env_command(char **parameters)
+{
+	env_shell(parameters);
+}
+
+/**
+ * execute_setenv_command - Executes the 'setenv' command.
+ * @parameters: The parameters for the command.
+ */
+void execute_setenv_command(char **parameters)
+{
+	if (parameters[1] == NULL || parameters[2] == NULL)
+	{
+		_perror("setenv: Too few arguments\n");
+		return;
+	}
+	if (set_env(parameters[1], parameters[2]) != 0)
+	{
+		_perror("setenv: Failed to set environment variable\n");
+	}
+}
+
+/**
+ * execute_unsetenv_command - Executes the 'unsetenv' command.
+ * @parameters: The parameters for the command.
+ */
+void execute_unsetenv_command(char **parameters)
+{
+	if (parameters[1] == NULL)
+	{
+		_perror("unsetenv: Too few arguments\n");
+		return;
+	}
+	if (unset_env(parameters[1]) != 0)
+	{
+		_perror("unsetenv: Failed to unset environment variable\n");
+	}
+}
+
+/**
  * execute_shell_command - Executes a shell command.
  * @parameters: The parameters for the command.
  * @parameter: The parameter for the command.
@@ -10,47 +73,33 @@ void execute_shell_command(char **parameters, char *parameter, int line_count)
 {
 	int processStatus;
 	pid_t processId;
+
 	if (_strcmp(parameters[0], "cd") == 0)
 	{
-		_cd(parameter, parameters, line_count);
+		execute_cd_command(parameters, parameter, line_count);
 		return;
 	}
 	else if (_strcmp(parameters[0], "echo") == 0)
 	{
-		_echo(parameters);
+		execute_echo_command(parameters);
 		return;
 	}
 	else if (_strcmp(parameters[0], "env") == 0)
 	{
-		env_shell(parameters);
+		execute_env_command(parameters);
 		return;
 	}
 	else if (_strcmp(parameters[0], "setenv") == 0)
 	{
-		if (parameters[1] == NULL || parameters[2] == NULL)
-		{
-			_perror("setenv: Too few arguments\n");
-			return;
-		}
-		if (set_env(parameters[1], parameters[2]) != 0)
-		{
-			_perror("setenv: Failed to set environment variable\n");
-		}
+		execute_setenv_command(parameters);
 		return;
 	}
 	else if (_strcmp(parameters[0], "unsetenv") == 0)
 	{
-		if (parameters[1] == NULL)
-		{
-			_perror("unsetenv: Too few arguments\n");
-			return;
-		}
-		if (unset_env(parameters[1]) != 0)
-		{
-			_perror("unsetenv: Failed to unset environment variable\n");
-		}
+		execute_unsetenv_command(parameters);
 		return;
 	}
+
 	processId = fork();
 	if (processId == 0)
 	{

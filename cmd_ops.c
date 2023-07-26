@@ -8,12 +8,15 @@
  */
 void _cd(char *parameter, char **parameters, int line_count)
 {
-	char *s, *dir, buffer[1024];
+	char *s;
+	char *dir;
+	char buffer[1024];
 	int chdir_ret;
 
 	s = getcwd(buffer, 1024);
 	if (!s)
 		_puts("TODO: >>getcwd failure emsg here<<\n");
+
 	if (!parameters[1])
 	{
 		dir = getenv("HOME");
@@ -35,9 +38,11 @@ void _cd(char *parameter, char **parameters, int line_count)
 		_putchar('\n');
 		chdir_ret = chdir(dir);
 	}
-
 	else
+	{
 		chdir_ret = chdir(parameters[1]);
+	}
+
 	if (chdir_ret == -1)
 	{
 		print_error(parameter, line_count, parameters[0], "can't cd to ");
@@ -58,6 +63,7 @@ void _cd(char *parameter, char **parameters, int line_count)
 void _echo(char **parameters)
 {
 	int i = 1;
+
 	while (parameters[i])
 	{
 		_print(parameters[i]);

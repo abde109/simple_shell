@@ -14,12 +14,22 @@
 #define PROMPT "#cisfun$ "
 
 /* Data structures */
+
+/*
+ * struct list_s - struct to store list nodes
+ * @str: string stored in the node
+ * @next: pointer to the next node in the list
+ */
 typedef struct list_s
 {
 	char *str;
 	struct list_s *next;
 } list_t;
 
+/*
+ * struct info_s - struct to store environment information
+ * @env: pointer to the first node in the list of environment variables
+ */
 typedef struct info_s
 {
 	list_t *env;
