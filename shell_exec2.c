@@ -100,7 +100,7 @@ void execute_shell_command(char **parameters,
 		{
 			if (execv(parameters[0], parameters) == -1)
 			{
-				print_error(param, state->line_count,parameters[0], "not found\n");
+				print_error(param, state->line_count, parameters[0], "not found\n");
 				exit(127);
 			}
 		}
@@ -108,7 +108,7 @@ void execute_shell_command(char **parameters,
 		{
 			if (execvp(parameters[0], parameters) == -1)
 			{
-				print_error(param, state->line_count,parameters[0], "not found\n");
+				print_error(param, state->line_count, parameters[0], "not found\n");
 				exit(127);
 			}
 		}
