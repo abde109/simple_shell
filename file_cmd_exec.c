@@ -49,6 +49,7 @@ void handle_exit(char **tokens, ShellState *state)
  * file_shell_prompt - Prompts the shell with a file.
  * @inputLine: The input line from the file.
  * @arguments: The arguments for the command.
+ * @state: The state of the shell.
  */
 void file_shell_prompt(char *inputLine, char **arguments, ShellState *state)
 {

@@ -76,7 +76,7 @@ int handle_built_in_commands(char **parameters,
 /**
  * execute_shell_command - Executes a shell command.
  * @parameters: The parameters for the command.
- * @parameter: The parameter for the command.
+ * @param: The parameter for the command.
  * @state: The ShellState struct containing the line count.
  */
 void execute_shell_command(char **parameters,
