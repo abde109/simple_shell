@@ -91,6 +91,7 @@ void execute_shell_command(char **parameters, char *parameter, ShellState *state
 	if (processId == 0)
 	{
 		char *path = getenv("PATH");
+
 		if (path == NULL)
 		{
 			if (execv(parameters[0], parameters) == -1)
