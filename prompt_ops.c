@@ -20,6 +20,7 @@ char *shell_prompt(void)
 /**
  * prompt - Prompts the user for input.
  * @arguments: The arguments for the prompt.
+ * @state: The current state of the shell.
  */
 void prompt(char **arguments __attribute__((unused)), ShellState *state)
 {
