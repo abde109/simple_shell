@@ -69,14 +69,14 @@ void execute_unsetenv_command(char **parameters)
  * @parameter: The parameter for the command.
  * @line_count: The line count in the command.
  */
-void execute_shell_command(char **parameters, char *parameter, int line_count)
+void execute_shell_command(char **parameters, char *parameter, ShellState *state)
 {
 	int processStatus;
 	pid_t processId;
 
 	if (_strcmp(parameters[0], "cd") == 0)
 	{
-		execute_cd_command(parameters, parameter, line_count);
+		execute_cd_command(parameters, parameter, state->line_count);
 		return;
 	}
 	else if (_strcmp(parameters[0], "echo") == 0)
@@ -108,26 +108,23 @@ void execute_shell_command(char **parameters, char *parameter, int line_count)
 		{
 			if (execv(parameters[0], parameters) == -1)
 			{
-				print_error(parameter, line_count, parameters[0], "not found\n");
-				exit(EXIT_FAILURE);
+				print_error(parameter, state->line_count, parameters[0], "not found\n");
+				exit(127);
 			}
 		}
 		else
 		{
 			if (execvp(parameters[0], parameters) == -1)
 			{
-				print_error(parameter, line_count, parameters[0], "not found\n");
-				exit(EXIT_FAILURE);
+				print_error(parameter, state->line_count, parameters[0], "not found\n");
+				exit(127);
 			}
 		}
 	}
 	else if (processId > 0)
 	{
 		waitpid(processId, &processStatus, WUNTRACED);
-		if (WIFEXITED(processStatus))
-		{
-			exitStatus = WEXITSTATUS(processStatus);
-		}
+		state->exitStatus = WEXITSTATUS(processStatus);
 	}
 	else if (processId < 0)
 	{

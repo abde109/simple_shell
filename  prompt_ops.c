@@ -21,7 +21,7 @@ char *shell_prompt(void)
  * prompt - Prompts the user for input.
  * @arguments: The arguments for the prompt.
  */
-void prompt(char **arguments __attribute__((unused)))
+void prompt(char **arguments __attribute__((unused)), ShellState *state)
 {
 	char inputLine[INPUT_LEN];
 	int terminalCheck = isatty(STDIN_FILENO);
@@ -32,6 +32,6 @@ void prompt(char **arguments __attribute__((unused)))
 			_print(PROMPT);
 		if (fgets(inputLine, INPUT_LEN, stdin) == NULL)
 			break;
-		file_shell_prompt(inputLine, arguments);
+		file_shell_prompt(inputLine, arguments, state);
 	}
 }

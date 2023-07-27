@@ -6,7 +6,7 @@
  * @arguments: The arguments for the command.
  * @line_count: The line count in the file.
  */
-void run_file_commands(const char *fileName, char **arguments, int line_count)
+void run_file_commands(const char *fileName, char **arguments, ShellState *state)
 {
 	char inputLine[MAX_LINE_LENGTH];
 	FILE *filePointer;
@@ -17,13 +17,13 @@ void run_file_commands(const char *fileName, char **arguments, int line_count)
 		char errorMsg[128];
 
 		snprintf(errorMsg, sizeof(errorMsg), "cannot open %s", fileName);
-		print_error(arguments[0], line_count, errorMsg, "No such file\n");
+		print_error(arguments[0], state->line_count, errorMsg, "No such file\n");
 		exit(2);
 	}
 
 	while (fgets(inputLine, MAX_LINE_LENGTH, filePointer) != NULL)
 	{
-		file_shell_prompt(inputLine, arguments);
+		file_shell_prompt(inputLine, arguments, state);
 	}
 
 	fclose(filePointer);
@@ -33,11 +33,11 @@ void run_file_commands(const char *fileName, char **arguments, int line_count)
  * handle_exit - Handles the exit command.
  * @tokens: The tokenized command.
  */
-void handle_exit(char **tokens)
+void handle_exit(char **tokens, ShellState *state)
 {
 	if (tokens[0] != NULL)
 	{
-		exit_shell_status(tokens, exitStatus);
+		exit_shell_status(tokens, state);
 	}
 	free(tokens);
 	exit_shell();
@@ -48,13 +48,13 @@ void handle_exit(char **tokens)
  * @inputLine: The input line from the file.
  * @arguments: The arguments for the command.
  */
-void file_shell_prompt(char *inputLine, char **arguments)
+void file_shell_prompt(char *inputLine, char **arguments, ShellState *state)
 {
-	static int line_count;
+	
 	char **tokens, previousChar, *linePointer, *comment;
 	int quoteFlag;
 
-	line_count++;
+	state->line_count++;
 
 	previousChar = '\0';
 	comment = NULL;
@@ -83,9 +83,9 @@ void file_shell_prompt(char *inputLine, char **arguments)
 	{
 		if (strcmp(tokens[0], "exit") == 0)
 		{
-			handle_exit(tokens);
+			handle_exit(tokens, state);
 		}
-		execute_shell_command(tokens, arguments[0], line_count);
+		execute_shell_command(tokens, arguments[0], state);
 	}
 	free(tokens);
 }

@@ -35,9 +35,14 @@ typedef struct info_s
 	list_t *env;
 } info_t;
 
+typedef struct
+{
+	int exitStatus;
+	int line_count;
+} ShellState;
+
 extern char **environ;
-extern int line_count;
-extern int exitStatus;
+
 
 /* Memory Operations (from memory_ops.c) */
 void free_buffer(char **buffer);
@@ -60,21 +65,21 @@ void print_error(char *fname, int line_count, char *command, char *estr);
 
 /* Exit Operations (from exit_ops.c) */
 void exit_shell(void);
-void exit_shell_status(char **parameters, int exitStatus);
+void exit_shell_status(char **parameters, ShellState *state);
 
 /* Tokenization (from tokenization.c) */
 char **tokenize_input(char *line);
 
 /* Prompt Operations (from prompt_ops.c) */
 char *shell_prompt(void);
-void prompt(char **arguments);
+void prompt(char **arguments, ShellState *state);
 
 /* File Command Execution (from file_cmd_exec.c) */
-void run_file_commands(const char *fileName, char **arguments, int line_count);
-void file_shell_prompt(char *inputLine, char **arguments);
+void run_file_commands(const char *fileName, char **arguments, ShellState *state);
+void file_shell_prompt(char *inputLine, char **arguments, ShellState *state);
 
 /* Shell Execution (from shell_exec.c) */
-void execute_shell_command(char **parameters, char *parameter, int line_count);
+void execute_shell_command(char **parameters, char *parameter, ShellState *state);
 
 /* Command Operations (from cmd_ops.c) */
 void _cd(char *parameter, char **parameters, int line_count);

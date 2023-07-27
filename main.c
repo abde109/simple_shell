@@ -6,14 +6,15 @@
  * @arguments: The arguments array.
  * Return: EXIT_SUCCESS on success, or other exit status on failure.
  */
-int exitStatus = 0;
-int line_count = 0;
 int main(int argCount, char **arguments)
 {
+	ShellState state;
+	state.exitStatus = 0;
+	state.line_count = 0;
 
 	if (argCount == 1)
-		prompt(arguments);
+		prompt(arguments, &state);
 	if (argCount == 2)
-		run_file_commands(arguments[1], arguments, line_count);
+		run_file_commands(arguments[1], arguments, &state);
 	return (EXIT_SUCCESS);
 }
