@@ -17,7 +17,7 @@
 /* Data structures */
 
 /*
- * struct list_s - struct to store list nodes
+ * struct list_s - linked list for storing strings
  * @str: string stored in the node
  * @next: pointer to the next node in the list
  */
@@ -48,7 +48,6 @@ typedef struct
 } ShellState;
 
 extern char **environ;
-
 
 /* Memory Operations (from memory_ops.c) */
 void free_buffer(char **buffer);
