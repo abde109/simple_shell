@@ -39,7 +39,7 @@ void execute_unsetenv_command(char **parameters)
  * @parameters: The parameters for the command.
  * @parameter: The parameter for the command.
  * @state: The ShellState struct containing the line count and other information.
- * @return: Returns 1 if a built-in command was executed, 0 otherwise.
+ * Return: Returns 1 if a built-in command was executed, 0 otherwise.
  */
 int handle_built_in_commands(char **parameters, char *parameter, ShellState *state)
 {
