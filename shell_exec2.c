@@ -56,19 +56,19 @@ int handle_built_in_commands(char **parameters, char *parameter, ShellState *sta
 	else if (_strcmp(parameters[0], "env") == 0)
 	{
 		execute_env_command(parameters);
-		return 1;
+		return (1);
 	}
 	else if (_strcmp(parameters[0], "setenv") == 0)
 	{
 		execute_setenv_command(parameters);
-		return 1;
+		return (1);
 	}
 	else if (_strcmp(parameters[0], "unsetenv") == 0)
 	{
 		execute_unsetenv_command(parameters);
-		return 1;
+		return (1);
 	}
-	return 0;
+	return (0);
 }
 
 /**
