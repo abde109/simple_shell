@@ -46,12 +46,12 @@ int handle_built_in_commands(char **parameters, char *parameter, ShellState *sta
 	if (_strcmp(parameters[0], "cd") == 0)
 	{
 		execute_cd_command(parameters, parameter, state->line_count);
-		return 1;
+		return (1);
 	}
 	else if (_strcmp(parameters[0], "echo") == 0)
 	{
 		execute_echo_command(parameters);
-		return 1;
+		return (1);
 	}
 	else if (_strcmp(parameters[0], "env") == 0)
 	{
