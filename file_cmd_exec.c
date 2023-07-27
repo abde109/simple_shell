@@ -4,9 +4,10 @@
  * run_file_commands - Runs commands from a file.
  * @fileName: The name of the file.
  * @arguments: The arguments for the command.
- * @line_count: The line count in the file.
+ * @state: The state of the shell.
  */
-void run_file_commands(const char *fileName, char **arguments, ShellState *state)
+void run_file_commands(const char *fileName, char **arguments,
+					   ShellState *state)
 {
 	char inputLine[MAX_LINE_LENGTH];
 	FILE *filePointer;
