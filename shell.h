@@ -11,7 +11,8 @@
 /* Macro definitions */
 #define INPUT_LEN 1024
 #define MAX_LINE_LENGTH 1024
-#define PROMPT "#cisfun$ "
+#define PROMPT \
+	"#cisfun$ "
 
 /* Data structures */
 
@@ -35,6 +36,11 @@ typedef struct info_s
 	list_t *env;
 } info_t;
 
+/*
+ * struct ShellState - struct to store shell state
+ * @exitStatus: exit status of the shell
+ * @line_count: current line count in the shell
+ */
 typedef struct
 {
 	int exitStatus;
