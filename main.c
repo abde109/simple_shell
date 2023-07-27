@@ -1,10 +1,7 @@
 #include "shell.h"
 
-/**
- *globle variables 
- */
-int exitStatus = 0;
 int line_count = 0;
+int exitStatus = 0;
 
 /**
  * main - The entry point of the program.
@@ -12,6 +9,7 @@ int line_count = 0;
  * @arguments: The arguments array.
  * Return: EXIT_SUCCESS on success, or other exit status on failure.
  */
+
 int main(int argCount, char **arguments)
 {
 	if (argCount == 1)
