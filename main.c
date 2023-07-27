@@ -1,7 +1,5 @@
 #include "shell.h"
-
-int line_count = 0;
-int exitStatus = 0;
+#include "globle.h"
 
 /**
  * main - The entry point of the program.
