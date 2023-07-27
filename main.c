@@ -9,6 +9,7 @@
 int main(int argCount, char **arguments)
 {
 	ShellState state;
+
 	state.exitStatus = 0;
 	state.line_count = 0;
 

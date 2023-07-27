@@ -8,6 +8,7 @@
 void add_to_list(list_t **list, char *str)
 {
 	list_t *new_node = malloc(sizeof(list_t));
+
 	new_node->str = str;
 	new_node->next = *list;
 	*list = new_node;
