@@ -19,7 +19,7 @@
 /**
  * struct list_s - linked list for storing strings.
  * Description: This structure represents a singly linked list where each node
- * contains a string. It is used throughout the code for storing and manipulating
+ * contains a string.
  * lists of strings.
  * @str: string stored in the node.
  * @next: pointer to the next node in the list.
@@ -32,7 +32,7 @@ typedef struct list_s
 
 /**
  * struct info_s - struct to store environment information.
- * Description: This structure is used to hold the environment information for the shell.
+ * Description: This structure is used to hold the environment information.
  * Currently, it only contains a list of environment variables, but it could be
  * expanded in the future to include other types of information.
  * @env: pointer to the first node in the list of environment variables.
@@ -44,7 +44,7 @@ typedef struct info_s
 
 /**
  * struct ShellState - struct to store shell state.
- * Description: This structure represents the current state of the shell, including
+ * Description: This structure represents the current state of the shell,
  * the exit status and the current line count. It is passed around to various
  * functions that may need to know about or modify the state of the shell.
  * @exitStatus: exit status of the shell.
