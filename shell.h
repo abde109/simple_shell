@@ -41,7 +41,7 @@ typedef struct info_s
  * @exitStatus: The exit status of the shell.
  * @line_count: The current line count in the shell.
  */
-typedef struct
+typedef struct ShellState
 {
 	int exitStatus;
 	int line_count;
