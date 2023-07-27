@@ -80,13 +80,13 @@ int handle_built_in_commands(char **parameters,
  * @state: The ShellState struct containing the line count.
  */
 void execute_shell_command(char **parameters,
-						   char *parameter,
+						   char *param,
 						   ShellState *state)
 {
 	int processStatus;
 	pid_t processId;
 
-	if (handle_built_in_commands(parameters, parameter, state))
+	if (handle_built_in_commands(parameters, param, state))
 	{
 		return;
 	}
@@ -100,8 +100,7 @@ void execute_shell_command(char **parameters,
 		{
 			if (execv(parameters[0], parameters) == -1)
 			{
-				print_error(parameter, state->line_count,
-							parameters[0], "not found\n");
+				print_error(param, state->line_count,parameters[0], "not found\n");
 				exit(127);
 			}
 		}
@@ -109,8 +108,7 @@ void execute_shell_command(char **parameters,
 		{
 			if (execvp(parameters[0], parameters) == -1)
 			{
-				print_error(parameter, state->line_count,
-							parameters[0], "not found\n");
+				print_error(param, state->line_count,parameters[0], "not found\n");
 				exit(127);
 			}
 		}
