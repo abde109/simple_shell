@@ -17,9 +17,12 @@
 /* Data structures */
 
 /**
- * struct list_s - linked list for storing environment variables
- * @str: The string that represents the environment variable
- * @next: A pointer to the next node in the list
+ * struct list_s - linked list for storing strings.
+ * Description: This structure represents a singly linked list where each node
+ * contains a string. It is used throughout the code for storing and manipulating
+ * lists of strings.
+ * @str: string stored in the node.
+ * @next: pointer to the next node in the list.
  */
 typedef struct list_s
 {
@@ -28,8 +31,11 @@ typedef struct list_s
 } list_t;
 
 /**
- * struct info_s - struct to store environment information
- * @env: A pointer to the first node in the list of environment variables
+ * struct info_s - struct to store environment information.
+ * Description: This structure is used to hold the environment information for the shell.
+ * Currently, it only contains a list of environment variables, but it could be
+ * expanded in the future to include other types of information.
+ * @env: pointer to the first node in the list of environment variables.
  */
 typedef struct info_s
 {
@@ -37,9 +43,12 @@ typedef struct info_s
 } info_t;
 
 /**
- * struct ShellState - struct to store the current state of the shell
- * @exitStatus: The exit status of the shell
- * @line_count: The current line count in the shell
+ * struct ShellState - struct to store shell state.
+ * Description: This structure represents the current state of the shell, including
+ * the exit status and the current line count. It is passed around to various
+ * functions that may need to know about or modify the state of the shell.
+ * @exitStatus: exit status of the shell.
+ * @line_count: current line count in the shell.
  */
 typedef struct
 {
