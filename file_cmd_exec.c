@@ -4,7 +4,7 @@
  * run_file_commands - Runs commands from a file.
  * @fileName: The name of the file.
  * @arguments: The arguments for the command.
- * @state: The state of the shell.
+ * @state: The state of the shell, including line count and other contextual info.
  */
 void run_file_commands(const char *fileName, char **arguments,
 					   ShellState *state)
@@ -33,6 +33,7 @@ void run_file_commands(const char *fileName, char **arguments,
 /**
  * handle_exit - Handles the exit command.
  * @tokens: The tokenized command.
+ * @state: The state of the shell, which might influence how the exit is handled.
  */
 void handle_exit(char **tokens, ShellState *state)
 {
