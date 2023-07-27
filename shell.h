@@ -17,9 +17,9 @@
 /* Data structures */
 
 /**
- * @list_t: linked list for storing strings
- * @str: string stored in the node
- * @next: pointer to the next node in the list
+ * @list_s: linked list for storing environment variables
+ * @str: The string that represents the environment variable
+ * @next: A pointer to the next node in the list
  */
 typedef struct list_s
 {
@@ -29,7 +29,7 @@ typedef struct list_s
 
 /**
  * @info_s: struct to store environment information
- * @env: pointer to the first node in the list of environment variables
+ * @env: A pointer to the first node in the list of environment variables
  */
 typedef struct info_s
 {
@@ -37,9 +37,9 @@ typedef struct info_s
 } info_t;
 
 /**
- * @ShellState: struct to store shell state
- * @exitStatus: exit status of the shell
- * @line_count: current line count in the shell
+ * @ShellState: struct to store the current state of the shell
+ * @exitStatus: The exit status of the shell
+ * @line_count: The current line count in the shell
  */
 typedef struct
 {
