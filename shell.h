@@ -36,8 +36,8 @@ typedef struct info_s
 } info_t;
 
 extern char **environ;
-extern int exitStatus;
 extern int line_count;
+extern int exitStatus;
 
 /* Memory Operations (from memory_ops.c) */
 void free_buffer(char **buffer);
