@@ -61,6 +61,7 @@ int unset_env(char *varName)
 void print_filtered_env(void)
 {
 	char **envp = environ;
+
 	info_t info;
 	info.env = NULL;
 
