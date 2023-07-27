@@ -21,7 +21,7 @@ int _strlen(char *str)
  * _strcmp - Compares two strings.
  * @str1: The first string.
  * @str2: The second string.
- * Return: An integer less than, equal to, or greater than zero if str1 is found,
+ * Return:An integer less than,equal to,or greater than zero if str1 is found,
  * respectively, to be less than, to match, or be greater than str2.
  */
 int _strcmp(char *str1, char *str2)
