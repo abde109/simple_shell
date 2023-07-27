@@ -38,7 +38,7 @@ void execute_unsetenv_command(char **parameters)
  * execute_shell_command - Executes a shell command.
  * @parameters: The parameters for the command.
  * @parameter: The parameter for the command.
- * @line_count: The line count in the command.
+ * @state: The ShellState struct containing the line count and other information.
  */
 void execute_shell_command(char **parameters, char *parameter, ShellState *state)
 {
