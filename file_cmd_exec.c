@@ -51,7 +51,6 @@ void handle_exit(char **tokens, ShellState *state)
  */
 void file_shell_prompt(char *inputLine, char **arguments, ShellState *state)
 {
-	
 	char **tokens, previousChar, *linePointer, *comment;
 	int quoteFlag;
 
