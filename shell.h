@@ -81,12 +81,12 @@ char *shell_prompt(void);
 void prompt(char **arguments, ShellState *state);
 
 /* File Command Execution (from file_cmd_exec.c) */
-void run_file_commands(const char *fileName, char **arguments, 
+void run_file_commands(const char *fileName, char **arguments,
 ShellState *state);
 void file_shell_prompt(char *inputLine, char **arguments, ShellState *state);
 
 /* Shell Execution (from shell_exec.c) */
-void execute_shell_command(char **parameters, char *parameter, 
+void execute_shell_command(char **parameters, char *parameter,
 ShellState *state);
 
 /* Shell Execution (from shell_exec2.c) */
