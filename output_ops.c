@@ -27,6 +27,7 @@ void _eputs(char *str)
 void print_d(int n, int fd)
 {
 	char c;
+
 	if (n < 0)
 	{
 		write(fd, "-", 1);
@@ -34,7 +35,9 @@ void print_d(int n, int fd)
 	}
 	if (n / 10)
 		print_d(n / 10, fd);
+
 	c = n % 10 + '0';
+
 	write(fd, &c, 1);
 }
 
@@ -49,7 +52,9 @@ int _puts(char *text)
 
 	if (!(text))
 		return (0);
+
 	for (counter = 0; text[counter]; counter++)
 		write(STDOUT_FILENO, &text[counter], 1);
+
 	return (counter);
 }
