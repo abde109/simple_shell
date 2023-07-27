@@ -81,6 +81,11 @@ void file_shell_prompt(char *inputLine, char **arguments, ShellState *state);
 /* Shell Execution (from shell_exec.c) */
 void execute_shell_command(char **parameters, char *parameter, ShellState *state);
 
+/* Shell Execution (from shell_exec2.c) */
+void execute_cd_command(char **parameters, char *parameter, int line_count);
+void execute_echo_command(char **parameters);
+void execute_env_command(char **parameters);
+
 /* Command Operations (from cmd_ops.c) */
 void _cd(char *parameter, char **parameters, int line_count);
 void _echo(char **parameters);
