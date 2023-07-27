@@ -38,12 +38,10 @@ void execute_unsetenv_command(char **parameters)
  * handle_built_in_commands - Handles the built-in commands.
  * @parameters: The parameters for the command.
  * @parameter: The parameter for the command.
- * @state: The ShellState struct containing the line count and other information.
+ * @state: The ShellState struct containing the line count.
  * Return: Returns 1 if a built-in command was executed, 0 otherwise.
  */
-int handle_built_in_commands(char **parameters,
-							 char *parameter,
-							 ShellState *state)
+int handle_built_in_commands(char **parameters, char *parameter, ShellState *state)
 {
 	if (_strcmp(parameters[0], "cd") == 0)
 	{
@@ -79,9 +77,7 @@ int handle_built_in_commands(char **parameters,
  * @parameter: The parameter for the command.
  * @state: The ShellState struct containing the line count and other information.
  */
-void execute_shell_command(char **parameters,
-						   char *parameter,
-						   ShellState *state)
+void execute_shell_command(char **parameters, char *parameter, ShellState *state)
 {
 	int processStatus;
 	pid_t processId;
@@ -100,8 +96,7 @@ void execute_shell_command(char **parameters,
 		{
 			if (execv(parameters[0], parameters) == -1)
 			{
-				print_error(parameter, state->line_count,
-							parameters[0], "not found\n");
+				print_error(parameter, state->line_count, parameters[0], "not found\n");
 				exit(127);
 			}
 		}
@@ -109,8 +104,7 @@ void execute_shell_command(char **parameters,
 		{
 			if (execvp(parameters[0], parameters) == -1)
 			{
-				print_error(parameter, state->line_count,
-							parameters[0], "not found\n");
+				print_error(parameter, state->line_count, parameters[0], "not found\n");
 				exit(127);
 			}
 		}
