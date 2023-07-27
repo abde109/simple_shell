@@ -35,6 +35,43 @@ void execute_unsetenv_command(char **parameters)
 }
 
 /**
+ * handle_built_in_commands - Handles the built-in commands.
+ * @parameters: The parameters for the command.
+ * @parameter: The parameter for the command.
+ * @state: The ShellState struct containing the line count and other information.
+ * @return: Returns 1 if a built-in command was executed, 0 otherwise.
+ */
+int handle_built_in_commands(char **parameters, char *parameter, ShellState *state)
+{
+	if (_strcmp(parameters[0], "cd") == 0)
+	{
+		execute_cd_command(parameters, parameter, state->line_count);
+		return 1;
+	}
+	else if (_strcmp(parameters[0], "echo") == 0)
+	{
+		execute_echo_command(parameters);
+		return 1;
+	}
+	else if (_strcmp(parameters[0], "env") == 0)
+	{
+		execute_env_command(parameters);
+		return 1;
+	}
+	else if (_strcmp(parameters[0], "setenv") == 0)
+	{
+		execute_setenv_command(parameters);
+		return 1;
+	}
+	else if (_strcmp(parameters[0], "unsetenv") == 0)
+	{
+		execute_unsetenv_command(parameters);
+		return 1;
+	}
+	return 0;
+}
+
+/**
  * execute_shell_command - Executes a shell command.
  * @parameters: The parameters for the command.
  * @parameter: The parameter for the command.
@@ -45,29 +82,8 @@ void execute_shell_command(char **parameters, char *parameter, ShellState *state
 	int processStatus;
 	pid_t processId;
 
-	if (_strcmp(parameters[0], "cd") == 0)
+	if (handle_built_in_commands(parameters, parameter, state))
 	{
-		execute_cd_command(parameters, parameter, state->line_count);
-		return;
-	}
-	else if (_strcmp(parameters[0], "echo") == 0)
-	{
-		execute_echo_command(parameters);
-		return;
-	}
-	else if (_strcmp(parameters[0], "env") == 0)
-	{
-		execute_env_command(parameters);
-		return;
-	}
-	else if (_strcmp(parameters[0], "setenv") == 0)
-	{
-		execute_setenv_command(parameters);
-		return;
-	}
-	else if (_strcmp(parameters[0], "unsetenv") == 0)
-	{
-		execute_unsetenv_command(parameters);
 		return;
 	}
 
