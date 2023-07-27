@@ -37,7 +37,7 @@ typedef struct info_s
 } info_t;
 
 /**
- * @ShellState: struct to store the current state of the shell
+ * struct ShellState - struct to store the current state of the shell
  * @exitStatus: The exit status of the shell
  * @line_count: The current line count in the shell
  */
